@@ -1,0 +1,236 @@
+ /* Estilos generales para el cuerpo de la página */
+        body {
+            background-image: url(https://images.unsplash.com/photo-1482859454392-1b5326395032?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0; /* Ajuste el padding global ya que el header y el main-content-wrapper lo manejarán */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.6;
+        }
+
+        /* Estilos para el nuevo encabezado (header) */
+        header {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para el header */
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+            justify-content: space-between; /* Espacio entre el h1 y la nav */
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px; /* Espacio debajo del header */
+        }
+
+        /* Estilos para el título principal en el header */
+        header h1 {
+            font-size: 2.8rem;
+            color: white;
+            margin: 0; /* Eliminar margen predeterminado */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Estilos para la navegación */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap; /* Envuelve los elementos de navegación */
+            justify-content: center; /* Centra los elementos de navegación */
+        }
+
+        nav ul li {
+            margin: 0 15px; /* Espacio entre los elementos de la lista */
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffeb3b; /* Un amarillo vibrante al pasar el ratón */
+        }
+
+        /* Estilos para el contenedor principal de las marcas */
+        .main-brand-container {
+            width: 100%;
+            max-width: 1300px; /* Un poco más de ancho para este contenedor */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Estilos para cada sección de marca (ej: Bugatti, Ferrari, etc.) */
+        .brand-section {
+            margin-bottom: 40px; /* Espacio entre cada sección de marca */
+            padding: 30px 0; /* Padding superior e inferior para cada sección */
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente para cada sección de marca */
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Estilos para los subtítulos de las marcas */
+        h2 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            padding-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            width: fit-content; /* Ajusta el ancho de la línea al texto */
+            margin-left: auto;
+            margin-right: auto; /* Centra el h2 */
+        }
+
+        /* Estilos para el contenedor de imágenes (galería dentro de cada marca) */
+        .contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 5px auto; /* Centra el contenedor y le da un poco de margen */
+            max-width: 1200px; /* Ancho máximo para la galería interna */
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3); /* Fondo más ligero para las imágenes */
+            border-radius: 12px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra interna para un efecto de profundidad */
+            box-sizing: border-box;
+        }
+
+        /* Estilos para las imágenes dentro del contenedor */
+        .contenedor img {
+            padding: 15px;
+            width: calc(33.33% - 30px);
+            min-width: 280px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        
+
+        /* Efecto hover para las imágenes */
+        .contenedor img:hover {
+            background-color: yellow;
+            cursor: pointer;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Estilos para la ventana modal (overlay) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Contenido de la modal (la imagen ampliada) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        /* Botón de cerrar la modal */
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Estilos para dispositivos móviles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; /* Apila el título y la navegación */
+                padding: 15px;
+            }
+            header h1 {
+                margin-bottom: 15px; /* Espacio entre el h1 y la nav en móvil */
+                font-size: 2rem;
+            }
+            nav ul li {
+                margin: 0 8px; /* Menos espacio entre nav items en móvil */
+            }
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+            .brand-section {
+                padding: 20px 0;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .contenedor {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .contenedor img {
+                width: 100%;
+                height: 200px;
+                padding: 10px;
+            }
+            .modal-content {
+                max-width: 95%;
+            }
+            .close-button {
+                font-size: 30px;
+                top: 10px;
+                right: 20px;
+            }
+        }
